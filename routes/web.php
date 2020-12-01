@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OptionController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('products.index');
 });
+
+Route::resource('products', ProductController::class)->except('show');
+Route::resource('options', OptionController::class)->except('show');
